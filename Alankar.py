@@ -5,19 +5,19 @@ import re
 
 def detect_utpreksha(sentence):
     imagination_words = ["જાણે", "માનીએ કે", "જેમ કે", "જો કે", "થાય એવું કે", "લાગે એવું કે"]
-    return "Utpreksha (ઉત્પ્રેક્ષા) – Hypothetical Imagination" if any(word in sentence for word in imagination_words) else None
+    return "ઉત્પ્રેક્ષા અલંકાર – અર્થાલંકાર" if any(word in sentence for word in imagination_words) else None
 
 def detect_rupak(sentence):
     starts = ["તે", "તેણે", "તેને", "તેનું", "તેવો", "એનું", "એના", "એ", "પેલો", "પેલી"]
-    return "Rupak (રૂપક) – Metaphor" if any(sentence.strip().startswith(start) for start in starts) else None
+    return "રૂપક અલંકાર – અર્થાલંકાર" if any(sentence.strip().startswith(start) for start in starts) else None
 
 def detect_upama(sentence):
     markers = ["કેમ", "ની જેમ", "પ્રમાણે", "જેમ"]
-    return "Upama (ઉપમા) – Simile" if any(marker in sentence for marker in markers) else None
+    return "ઉપમા અલંકાર – અર્થાલંકાર" if any(marker in sentence for marker in markers) else None
 
 def detect_virodh(sentence):
     contrast_words = ["પરંતુ", "પણ", "છતાં", "તેમ છતાં", "તોય", "તો પણ", "છતાં પણ"]
-    return "Virodh (વિરોધ) – Antithesis" if any(word in sentence for word in contrast_words) else None
+    return "વિરોધ અલંકાર – અર્થાલંકાર" if any(word in sentence for word in contrast_words) else None
 
 def detect_apurnokti(sentence):
     apurnokti_keywords = [
@@ -28,11 +28,11 @@ def detect_apurnokti(sentence):
     ]
     sentence_clean = sentence.strip()
     if sentence_clean.endswith("..."):
-        return "Apurnokti (અપૂર્ણોક્તિ) – Abrupt Ending"
+        return "અપૂર્ણોક્તિ અલંકાર – અર્થાલંકાર"
     if sentence_clean.endswith("?") and any(keyword in sentence_clean for keyword in apurnokti_keywords):
-        return "Apurnokti (અપૂર્ણોક્તિ) – Abrupt Ending"
+        return "અપૂર્ણોક્તિ અલંકાર – અર્થાલંકાર"
     if any(sentence_clean.endswith(keyword) for keyword in apurnokti_keywords):
-        return "Apurnokti (અપૂર્ણોક્તિ) – Abrupt Ending"
+        return "અપૂર્ણોક્તિ અલંકાર – અર્થાલંકાર"
     return None
 
 def detect_ananvay_absolute(sentence):
@@ -50,7 +50,7 @@ def detect_anuprasa(sentence):
     for ch in set(''.join(sentence)):
         count = sum(word.startswith(ch) for word in words)
         if count >= 2:
-            return "Anuprasa (અનુપ્રાસ) – Alliteration"
+            return "વર્ણાનુપ્રાસ અલંકાર – શબ્દાલંકાર"
     return None
 
 # === Streamlit Page Setup ===
